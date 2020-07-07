@@ -3,7 +3,13 @@ api_platform:
     show_webby: false
     mapping:
         paths: ['%kernel.project_dir%/src/Entity']
+    formats:
+        json: ['application/json']
     patch_formats:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+    collection:
+        pagination:
+            items_per_page: 30
+            partial: true
