@@ -45,7 +45,8 @@ abstract class AbstractEntityDenormalizer implements DenormalizerInterface
             if (null == $subEntity) {
                 throw new EntityNotFoundException(ucfirst($subEntityName) . " id not found");
             }
-            $entity->setBrasserie($subEntity);
+            $methodName = 'set' . ucfirst($subEntityName); 
+            $entity->$methodName($subEntity);
         }
     }
 
