@@ -31,6 +31,9 @@ class EntityPersister implements ContextAwareDataPersisterInterface
     {
         $this->em->persist($data);
         $this->em->flush();
+        /**
+         * Ununsed DataPersister
+         */
         return $data;
     }
 

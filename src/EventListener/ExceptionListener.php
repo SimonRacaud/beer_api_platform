@@ -28,6 +28,7 @@ class ExceptionListener
         } else {
             $response->setStatusCode(Response::HTTP_INTERNAL_SERVER_ERROR);
         }
+        $response->headers->set('Content-Type', 'application/json');
 
         $event->setResponse($response);
     }
