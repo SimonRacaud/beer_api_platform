@@ -19,6 +19,16 @@ class BrasserieRepository extends ServiceEntityRepository
         parent::__construct($registry, Brasserie::class);
     }
 
+    public function getByCountry()
+    {
+        $rawSql = "SELECT country, COUNT(*) as NUM FROM brasserie GROUP BY country ORDER BY NUM DESC";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
+        $stmt->execute([]);
+
+        return $stmt->fetchAll();
+    }
+
     // /**
     //  * @return Brasserie[] Returns an array of Brasserie objects
     //  */

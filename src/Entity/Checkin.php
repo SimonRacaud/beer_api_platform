@@ -11,7 +11,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ApiResource(
  *  normalizationContext={"groups"={"checkin:read"}},
- *  denormalizationContext={"groups"={"checkin:write"}}
+ *  denormalizationContext={"groups"={"checkin:write"}},
+ *  collectionOperations={
+ *      "get"={},
+ *      "post"={},
+ *      "beer_by_mark"={
+ *          "method"="GET",
+ *          "path"="/rank/beer_by_mark",
+ *          "controller"=App\Controller\Api\BeerByMarkController::class 
+ *      }
+ *  }
  * )
  * @ORM\Entity(repositoryClass=CheckinRepository::class)
  */

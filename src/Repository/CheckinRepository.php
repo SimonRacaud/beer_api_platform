@@ -19,6 +19,22 @@ class CheckinRepository extends ServiceEntityRepository
         parent::__construct($registry, Checkin::class);
     }
 
+    public function getByMark()
+    {
+        $rawSql = "
+            SELECT AVG(checkin.mark) as mark, beer.name as beer, beer.abv, beer.ibu, beer.date_create, beer.date_update, brasserie.name as brasserie
+            FROM checkin
+            LEFT JOIN beer ON checkin.beer_id = beer.id
+            LEFT JOIN brasserie ON beer.brasserie_id = brasserie.id
+            GROUP BY beer.id
+        ";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
+        $stmt->execute([]);
+
+        return $stmt->fetchAll();
+    }
+
     // /**
     //  * @return Checkin[] Returns an array of Checkin objects
     //  */

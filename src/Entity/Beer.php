@@ -14,7 +14,21 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 /**
  * @ApiResource(
  *  normalizationContext={"groups"={"beer:read"}},
- *  denormalizationContext={"groups"={"beer:write"}}
+ *  denormalizationContext={"groups"={"beer:write"}},
+ *  collectionOperations={
+ *      "get"={},
+ *      "post"={},
+ *      "beer_by_abv"={
+ *          "method"="GET",
+ *          "path"="/rank/beer_by_abv",
+ *          "controller"=App\Controller\Api\BeerByAbvController::class
+ *      },
+ *      "beer_by_ibu"={
+ *          "method"="GET",
+ *          "path"="/rank/beer_by_ibu",
+ *          "controller"=App\Controller\Api\BeerByIbuController::class
+ *      }
+ *  }
  * )
  * @ORM\Entity(repositoryClass=BeerRepository::class)
  * @UniqueEntity(fields="name", message="Name is already taken.")

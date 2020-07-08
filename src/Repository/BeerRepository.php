@@ -19,6 +19,26 @@ class BeerRepository extends ServiceEntityRepository
         parent::__construct($registry, Beer::class);
     }
 
+    public function getByABV(int $nb_value)
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.abv', 'DESC')
+            ->setMaxResults($nb_value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function getByIBU(int $nb_value)
+    {
+        return $this->createQueryBuilder('b')
+            ->orderBy('b.ibu', 'DESC')
+            ->setMaxResults($nb_value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Beer[] Returns an array of Beer objects
     //  */
