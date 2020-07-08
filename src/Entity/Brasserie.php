@@ -74,7 +74,7 @@ class Brasserie
      * @Assert\DateTime(
      *      message="Invalid format of date_create"
      * )
-     * @Groups({"brasserie:read", "brasserie:write"})
+     * @Groups({"brasserie:read"})
      */
     private $dateCreate;
 
@@ -84,7 +84,7 @@ class Brasserie
      * @Assert\DateTime(
      *      message="Invalid format of date_update"
      * )
-     * @Groups({"brasserie:read", "brasserie:write"})
+     * @Groups({"brasserie:read"})
      */
     private $dateUpdate;
 

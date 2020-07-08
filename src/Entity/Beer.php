@@ -39,7 +39,7 @@ class Beer
 
     /**
      * @ORM\Column(type="float")
-     * Groups({"beer:read", "beer:write"})
+     * @Groups({"beer:read", "beer:write"})
      * @Assert\NotBlank
      * @Assert\PositiveOrZero
      */
@@ -87,7 +87,6 @@ class Beer
 
     public function __construct()
     {
-        $this->brasserie = new ArrayCollection();
         $this->checkins = new ArrayCollection();
     }
 
