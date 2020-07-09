@@ -37,3 +37,6 @@ services:
     App\EventListener\ExceptionListener:
         tags:
             - { name: kernel.event_listener, event: kernel.exception }
+
+    # App\Event\UserSubscriber:
+    #     tags: ['kernel.event_subscriber']
