@@ -2,38 +2,41 @@
 
 namespace App\DataPersister;
 
-use App\Entity\Beer;
 use App\Entity\User;
-use App\Entity\Checkin;
-use App\Entity\Brasserie;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class EntityPersister implements ContextAwareDataPersisterInterface
+class UserPersister implements ContextAwareDataPersisterInterface
 {
     public EntityManagerInterface $em;
 
-    public function __construct(EntityManagerInterface $em)
+    public function __construct(
+        EntityManagerInterface $em,
+        UserPasswordEncoderInterface $passwordEncoder
+        )
     {
         $this->em = $em;
+        $this->passwordEncoder = $passwordEncoder;
     }
 
     public function supports($data, array $context = []): bool
     {
-        return $data instanceof Brasserie
-            || $data instanceof Beer
-            || $data instanceof Checkin
-            || $data instanceof User
-            ;
+        return $data instanceof User;
     }
 
     public function persist($data, array $context = [])
     {
+
+        $passwd = $this->passwordEncoder->encodePassword(
+            $data,
+            $data->getPassword()
+        );
+        $data->setPassword($passwd);
+
         $this->em->persist($data);
         $this->em->flush();
-        /**
-         * Ununsed DataPersister
-         */
+
         return $data;
     }
 

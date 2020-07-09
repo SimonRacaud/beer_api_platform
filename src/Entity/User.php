@@ -11,18 +11,26 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ApiResource(
  *  normalizationContext={"groups"={"user:read"}},
- *  denormalizationContext={"groups"={"user:write"}}
+ *  denormalizationContext={"groups"={"user:write"}},
+ *  collectionOperations={
+ *      "get"={},
+ *      "post"={},
+ *      ""
+ *  }
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields="pseudo", message="Pseudo is already taken.")
  */
-class User
+class User implements UserInterface
 {
+    const ROLE_USER = 'ROLE_USER';
+    const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -128,7 +136,10 @@ class User
 
     public function getRole(): ?array
     {
-        return $this->role;
+        $roles = $this->role;
+        $roles[] = self::ROLE_USER;
+
+        return $roles;
     }
 
     public function setRole(array $role): self
@@ -215,5 +226,27 @@ class User
         }
 
         return $this;
+    }
+
+    //
+
+    public function getRoles(): array
+    {
+        return $this->getRole();
+    }
+
+    public function getSalt(): ?string
+    {
+        return null;
+    }
+
+    public function getUsername(): string
+    {
+        return $this->getPseudo();
+    }
+
+    public function eraseCredentials()
+    {
+        //TODO
     }
 }

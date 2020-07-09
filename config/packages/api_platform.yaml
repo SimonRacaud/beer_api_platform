@@ -12,5 +12,5 @@ api_platform:
         versions: [3]
     collection:
         pagination:
-            items_per_page: 30
+            items_per_page: 30 
             partial: true
