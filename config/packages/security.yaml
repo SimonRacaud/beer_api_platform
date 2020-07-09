@@ -19,7 +19,8 @@ security:
         api:
             pattern: ^/api/
             stateless: true
-            anonymous: true
+            methods: [PUT, PATCH, DELETE]
+            #anonymous: true
             provider: users
             guard:
                 authenticators:
@@ -45,7 +46,7 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/docs, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/api/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        #- { path: ^/api/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/users, roles: IS_AUTHENTICATED_FULLY, methods: [PUT, PATCH, DELETE] }
         - { path: ^/api/checkins, roles: IS_AUTHENTICATED_FULLY, methods: [PUT, PATCH, DELETE] }
         - { path: ^/api/brasseries, roles: IS_AUTHENTICATED_FULLY, methods: [PUT, PATCH, DELETE] }
