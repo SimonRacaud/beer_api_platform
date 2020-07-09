@@ -19,8 +19,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *  denormalizationContext={"groups"={"user:write"}},
  *  collectionOperations={
  *      "get"={},
- *      "post"={},
- *      ""
+ *      "post"={}
  *  }
  * )
  * @ORM\Entity(repositoryClass=UserRepository::class)

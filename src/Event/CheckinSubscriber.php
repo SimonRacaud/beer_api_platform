@@ -5,7 +5,6 @@ namespace App\Event;
 use App\Entity\Checkin;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\KernelEvents;
-use App\Authorization\UserAuthorizationChecker;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 use App\Authorization\CheckinAuthorizationChecker;
 use ApiPlatform\Core\EventListener\EventPriorities;
