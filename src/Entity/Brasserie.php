@@ -88,7 +88,7 @@ class Brasserie
     private $dateCreate;
 
     /**
-     * ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime")
      * @Assert\NotBlank
      * @Assert\DateTime(
      *      message="Invalid format of date_update"
