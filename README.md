@@ -16,7 +16,7 @@ Les specifications se trouvent dans le dossier doc/spec.
 
 # Spécificité
 
-Une autre version de cet exercice est disponible sur ce repository : https://github.com/SimonRacaud/beer_api
+Une autre version de cet exercice est disponible sur ce repository : https://github.com/SimonRacaud/Beer-API
 Cette version est réalisée sans bundle particulier ("à la main")
 
 Dans la version que vous consultez, j'utilise le bundle API Platform qui permet de grandement réduire le travail de développement.
