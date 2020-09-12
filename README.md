@@ -13,3 +13,10 @@ Cette application permet a des utilisateurs de rentrer une note pour une biere l
 Cette api permet aussi de trouver des biere sen fonction de leur degre d'alcool ou d'amertume.
 
 Les specifications se trouvent dans le dossier doc/spec.
+
+# Spécificité
+
+Une autre version de cet exercice est disponible sur ce repository : https://github.com/SimonRacaud/beer_api
+Cette version est réalisée sans bundle particulier ("à la main")
+
+Dans la version que vous consultez, j'utilise le bundle API Platform qui permet de grandement réduire le travail de développement.
